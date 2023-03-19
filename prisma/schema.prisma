@@ -2,10 +2,46 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+    provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+    provider = "sqlite"
+    url      = env("DATABASE_URL")
+}
+
+model MediaItem {
+    mediaId         String     @id @unique @default(uuid())
+    name            String
+    overview        String     
+    posterPath      String
+    releaseDate     DateTime   @default(now())
+    price           Int        @default(5000)
+    MediaType       MediaType? @relation(fields: [mediaTypeTypeId], references: [typeId])
+    mediaTypeTypeId String?
+    Genre           Genre?     @relation(fields: [genreGenreId], references: [genreId])
+    genreGenreId    String?
+    Origin          Origin?    @relation(fields: [originOriginId], references: [originId])
+    originOriginId  String?
+}
+
+model MediaType {
+    typeId        String      @id @unique @default(uuid())
+    mediaCategory String
+    description   String
+    mediaItems    MediaItem[]
+}
+
+model Genre {
+    genreId     String      @id @unique @default(uuid())
+    genre       String
+    description String
+    mediaItems  MediaItem[]
+}
+
+model Origin {
+    originId   String      @id @unique @default(uuid())
+    country    String
+    language   String
+    mediaItems MediaItem[]
 }
