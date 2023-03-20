@@ -27,17 +27,17 @@ router.get("/movies/:id", async (req, res, next) => {
   }
 });
 
-// router.post("/movies", async (req, res, next) => {
-//   try {
-//     const data = req.body;
-//     const movie = await prisma.mediaItem.create({
-//       data: data,
-//     });
-//     res.json(movie);
-//   } catch (error) {
-//     next(error);
-//   }
-// });
+router.post("/movies", async (req, res, next) => {
+  try {
+    const data = req.body;
+    const movie = await prisma.mediaItem.create({
+      data: data,
+    });
+    res.json(movie);
+  } catch (error) {
+    next(error);
+  }
+});
 
 // router.delete("/movies/:id", async (req, res, next) => {
 //   res.send({ message: "AWESOME!!" });
