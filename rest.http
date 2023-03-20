@@ -1,0 +1,26 @@
+GET http://localhost:3000/api/v1/movies/
+
+###
+GET http://localhost:3000/api/v1/movies/ab60fe23-a25c-45d7-ac4d-62d78088edc4
+
+###
+POST http://localhost:3000/api/v1/movies/
+Content-Type: application/json
+
+{
+    "name" : "Game of Thrones",
+    "overview" : "Game of Thrones is an American fantasy drama television series created by David Benioff and D. B. Weiss for HBO. It is an adaptation of A Song of Ice and Fire, a series of fantasy novels by George R. R. Martin, the first of which is A Game of Thrones. The show was shot in the United Kingdom, Canada, Croatia, Iceland, Malta, Morocco, and Spain. It premiered on HBO in the United States on April 17, 2011, and concluded on May 19, 2019, with 73 episodes broadcast over eight seasons.",
+    "posterPath" : "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.hotstar.com%2Fin%2Ftv%2Fgame-of-thrones%2F8184&psig=AOvVaw3n7-z2OZDjH-Jg2JxAuwZr&ust=1679337132792000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCMDa88HQ6P0CFQAAAAAdAAAAABAD",
+    "price" : 9000,
+    "mediaTypeTypeId" : "16e9dc5e-f31f-4f59-bf05-1ce0aa325c95",
+    "genreGenreId" : "d2277bb1-857e-4a18-af45-e624ba59564f",
+    "originOriginId" : "ebbc3064-0b68-417a-ac38-db68c758c07b"
+}
+
+###
+PATCH http://localhost:3000/api/v1/movies/480d6083-e47f-4658-bc91-0dbf1b22a8f2
+Content-Type: application/json
+
+{
+    "price": 15000
+}
