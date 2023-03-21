@@ -3,6 +3,10 @@ const { PrismaClient } = require("@prisma/client");
 
 const prisma = new PrismaClient();
 
+router.get("/users", async (req, res, next) => {
+  res.send("hello user");
+});
+
 router.get("/movies", async (req, res, next) => {
   try {
     const movies = await prisma.mediaItem.findMany({
@@ -39,12 +43,31 @@ router.post("/movies", async (req, res, next) => {
   }
 });
 
-// router.delete("/movies/:id", async (req, res, next) => {
-//   res.send({ message: "AWESOME!!" });
-// });
+router.delete("/movies/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const movie = await prisma.mediaItem.delete({
+      where: {
+        mediaId: id,
+      },
+    });
+    res.json(movie);
+  } catch (error) {
+    next(error);
+  }
+});
 
-// router.patch("/movies/:id", async (req, res, next) => {
-//   res.send({ message: "Ok api is working 🚀" });
-// });
+router.patch("/movies/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const movie = await prisma.mediaItem.update({
+      where: { mediaId: id },
+      data: req.body,
+    });
+    res.json(movie);
+  } catch (error) {
+    next(error);
+  }
+});
 
 module.exports = router;
