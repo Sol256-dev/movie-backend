@@ -18,9 +18,12 @@ Content-Type: application/json
 }
 
 ###
-PATCH http://localhost:3000/api/v1/movies/480d6083-e47f-4658-bc91-0dbf1b22a8f2
+DELETE http://localhost:3000/api/v1/movies/480d6083-e47f-4658-bc91-0dbf1b22a8f2
+
+###
+PATCH http://localhost:3000/api/v1/movies/ab60fe23-a25c-45d7-ac4d-62d78088edc4
 Content-Type: application/json
 
 {
-    "price": 15000
+    "name": "The Avengers"
 }
